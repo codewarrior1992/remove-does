@@ -53,7 +53,7 @@ router.post('/products/delete', function (req, res, next) {
 		});
 });
 
-// Remove by params.id
+// Remove by params.id => fails
 router.post('/products/delete/:id', function (req, res, next) {
 	const _id = req.params.id;
 
@@ -64,6 +64,28 @@ router.post('/products/delete/:id', function (req, res, next) {
 			productsRef.once('value', (snapshot) => {
 				console.log(_id);
 
+				res.send({
+					success: true,
+					data: snapshot.val(),
+				});
+			});
+		});
+});
+
+// Update
+router.put('/products/update/:id', function (req, res, next) {
+	const _id = req.params.id;
+
+	let data = {
+		title: req.body.title,
+		id: req.body.id,
+	};
+
+	productsRef
+		.child(_id)
+		.update(data)
+		.then(() => {
+			productsRef.once('value', (snapshot) => {
 				res.send({
 					success: true,
 					data: snapshot.val(),
