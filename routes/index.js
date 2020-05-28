@@ -33,6 +33,7 @@ router.post('/products/post', function (req, res, next) {
 			success: true,
 			data: snapshot.val(),
 		});
+		res.end();
 	});
 });
 
@@ -68,6 +69,7 @@ router.post('/products/delete/:id', function (req, res, next) {
 					success: true,
 					data: snapshot.val(),
 				});
+				res.end();
 			});
 		});
 });
@@ -76,10 +78,14 @@ router.post('/products/delete/:id', function (req, res, next) {
 router.put('/products/update/:id', function (req, res, next) {
 	const _id = req.params.id;
 
-	let data = {
-		title: req.body.title,
-		id: req.body.id,
-	};
+	const data = req.body;
+
+	// INPUT 的 NAME 屬性 為 req.body.attribute 會傳來後端
+
+	// let data = {
+	// 	title: req.body.title,
+	// 	id: req.body.id,
+	// };
 
 	productsRef
 		.child(_id)
@@ -90,6 +96,7 @@ router.put('/products/update/:id', function (req, res, next) {
 					success: true,
 					data: snapshot.val(),
 				});
+				res.end();
 			});
 		});
 });
