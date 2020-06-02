@@ -101,4 +101,13 @@ router.put('/products/update/:id', function (req, res, next) {
 		});
 });
 
+// upload Files
+router.post('/uploadFile', function (req, res, next) {
+	const file = req.files;
+	console.log('file', file);
+
+	res.send({
+		success: true,
+	});
+});
 module.exports = router;
