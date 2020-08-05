@@ -13,7 +13,7 @@
 		"dotenv": "^8.2.0",
 		"ejs": "~2.6.1",
 		"express": "^4.16.4",
-		"express-fileupload": "^1.1.7-alpha.3",
+		"express-fileupload": "^1.1.9",
 		"firebase-admin": "^8.12.1",
 		"heroku-config": "^1.5.4",
 		"http-errors": "~1.6.3",
